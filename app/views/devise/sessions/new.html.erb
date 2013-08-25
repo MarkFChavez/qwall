@@ -1,0 +1,26 @@
+<%= t('Login') %>
+
+<div style="margin-top:150px;margin-left:100px">
+	<h2> QH Login <small> don't bother logging in if you are not part of this team! </small> </h2>
+
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+		<div>
+	  		<%= f.email_field :email, :autofocus => true, placeholder:"Email", class:"textfield", style:"padding:15px;width:300px", required:"required" %>
+	  	</div>
+
+	  	<div>
+	  		<%= f.password_field :password, placeholder:"Password", class:"textfield", style:"padding:15px;width:300px", required:"required" %>	
+	  	</div>
+
+	  <% if devise_mapping.rememberable? -%>
+	    <div style="display:none"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+	  <% end -%>
+
+	  	<div style="margin-top:10px">
+	  		<button type="submit" class="btn btn-large btn-inverse">
+	  			<i class='icon icon-cog icon-white'></i> Login
+	  		</button>
+	  	</div>
+	<% end %>
+</div>

@@ -1,0 +1,62 @@
+<%= t('Home') %>
+
+<div class="row-fluid">
+	<div class="span4 well" style="border-radius:0px;margin-top:10px" id="dashboard-left">
+		<div style="margin-top:10px;padding:5px">
+			<div style="text-align:center">
+				<div class="pull-left visible-desktop">
+					<%= g(current_user, "img-circle", size: 128)  %>
+				</div>
+
+				<div class="pull-left" style="margin-left:20px">
+					<ul class="nav nav-tabs nav-stacked">
+						<li style="background-color:#FFF"> <%= link_to "Refresh, they say?", root_path %> </li>
+						<li style="background-color:#FFF"> <a href="#">Write a post, they say?</a> </li>
+						<li style="background-color:#FFF"> <%= link_to "Get outta here!", destroy_user_session_path, method: :delete, confirm:"Are you going out? Be sure to come back fool!" %> </li>
+					</ul>
+				</div>
+
+				<div class="clearfix"></div>
+
+				<br />
+
+				<p class="lead"> <%= current_user.username %> </p>
+
+				<hr class="line" />
+			</div>
+		</div>
+
+		<div style="margin-top:5px;padding:5px;">
+			<%= render partial:"home/user", collection: @users %>
+		</div>
+	</div>
+
+	<div class="span8">
+		<div id="posts-container" style="padding:5px">
+			<% @posts.in_groups_of(4, false) do |row_posts| %>
+				<% row_posts.each do |post| %>
+					<div class="post-block well" style="border-radius:0px" data-toggle="tooltip" data-placement="right" title="created <%= distance_of_time_in_words(Time.now, post.created_at) %> ago.">
+						<div class="<%= cycle('red','green','blue') %> post-header">
+						</div>
+
+						<div style="margin-top:10px">
+							<div class='pull-left'>
+								<%= g(post.user, 'img-circle', size:60) %>
+							</div>
+
+							<div class='pull-left' style="margin-left:10px">
+								<strong> <%= post.user.username %> </strong>
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div style="margin-top:10px">
+							<p style="font-size:12px"> <%= post.content %> </p>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

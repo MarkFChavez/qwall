@@ -1,0 +1,10 @@
+<%= div_for user, class:"user-block" do %>
+	<div class="pull-left">
+		<%= g(user, "img-polaroid", size: 80) %>
+	</div>
+
+	<div style="margin-left:10px" class="pull-left">
+		<p> <%= user.username %> </p>
+	</div>
+	<div class="clearfix"></div>
+<% end %>
