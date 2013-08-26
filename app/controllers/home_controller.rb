@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   def index
   	@users = User.where("id <> :id", {id: current_user.id})
   	@posts = Post.all
+  	@post = Post.new
   end
 
 end

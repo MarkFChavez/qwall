@@ -1,10 +1,17 @@
 QuickhitsWall::Application.routes.draw do
   
+  get "posts/create"
+
+  get "posts/update"
+
+  get "posts/destroy"
+
   devise_for :users do
     root to: "devise/sessions#new"
   end
 
   resources :home
+  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
