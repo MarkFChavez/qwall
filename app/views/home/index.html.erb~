@@ -47,7 +47,7 @@
 	  <div class="modal-body">
 		  <hr />
 		  <label for="post_content" class="pull-left">Description:</label>
-		  <%= f.text_area :content, rows:3, placeholder:"Add a description for this board", class:"pull-left", style:"margin-left:20px", required:"required" %>
+		  <%= f.text_area :content, rows:3, placeholder:"Write it here", class:"pull-left", style:"margin-left:20px", required:"required" %>
 		  <div class="clearfix"></div>
 		  <hr />
 	  </div>

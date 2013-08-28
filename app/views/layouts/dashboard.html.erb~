@@ -16,7 +16,7 @@
 					  <%= link_to current_user.username.titleize, home_index_path, class:"brand" %>
 				    <ul class="nav">
 				      <li class="active"> <%= link_to "Home", home_index_path %> </li>
-				      <li> <%= link_to "<i class='icon icon-plus-sign'></i> Board".html_safe, "#", id:"create-post" %> </li>
+				      <li> <%= link_to "<i class='icon icon-add'></i> Board".html_safe, "#", id:"create-post" %> </li>
 				      <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, confirm:"Are you sure you want to logout?" %> </li>
 				    </ul>
 				  </div>
