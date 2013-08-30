@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium:"300x300>", thumb:"250x250>" }
   
-
+  has_many :comments, dependent: :destroy
   belongs_to :user
 
   validates :content, presence: true

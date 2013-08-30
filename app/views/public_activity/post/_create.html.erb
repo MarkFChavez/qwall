@@ -1,1 +1,7 @@
-<b> <%= activity.owner.username %> </b> said <i> <%= activity.trackable.content %> </i>
+<b> <%= activity.owner.username %> </b> 
+
+said 
+
+<% if activity.trackable %>
+	<i> <%= activity.trackable.content %> </i>
+<% end %>

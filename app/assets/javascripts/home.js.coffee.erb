@@ -18,4 +18,6 @@ $(document).ready ->
 			e.preventDefault()
 			$('#create-modal').modal 'hide'
 
-	
+		$(".toggle-comments").on 'click', (e) ->
+			e.preventDefault()
+			$(@).parent().parent().find('.comments-block').toggle()
