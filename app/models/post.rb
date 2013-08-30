@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   validates :content, length: { maximum: 100 }
   validates_attachment :avatar, content_type: { content_type: /^image\/(png|gif|jpg|jpeg)/ }
+  validates_attachment :avatar, size: {in: 0..100.kilobytes}
 
   default_scope order("created_at DESC")
 end

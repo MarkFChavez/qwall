@@ -6,6 +6,7 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'public_activity'
 
 gem 'devise'
 gem 'paperclip', '~> 3.0'
