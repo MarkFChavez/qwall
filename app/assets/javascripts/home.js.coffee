@@ -5,7 +5,7 @@
 $(document).ready ->
 	$(window).load ->
 		$('#posts-container').masonry
-			columnWidth: 20
+			columnWidth: 50
 			itemSelector: '.post-block'
 
 		$(".post-block").on "mouseover", ->
@@ -18,33 +18,4 @@ $(document).ready ->
 			e.preventDefault()
 			$('#create-modal').modal 'hide'
 
-		$("#new_post").on 'submit', (e) ->
-			e.preventDefault()
-
-			url = $(@).attr 'action'
-			home_path = $(@).data('success')
-			content = $(@).find('#post_content').val()
-
-			$.ajax
-				type: "POST"
-				dataType: "json"
-				url: url
-				data:
-					post:
-						content: content
-				success: (data) ->
-					status = data.operation_status
-					if status == 0
-						$("#message").addClass('success')
-						$("#message").html(data.notice)
-						$("#message").show()
-
-						window.location.href = home_path
-					else
-						$("#message").addClass('error')
-						$("#message").html(data.alert)
-						$("#message").show()
-				error: (data) ->
-					alert 'error'
-				complete: (data) ->
-					$("#post_content").val('')
+	

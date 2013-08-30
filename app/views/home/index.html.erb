@@ -22,6 +22,12 @@
 						<div class="clearfix"></div>
 
 						<div style="margin-top:10px">
+							<% if post.avatar.file? %>
+								<div style="text-align:center;margin-bottom:10px">
+									<%= image_tag post.avatar.url(:medium) %>
+								</div>
+							<% end %>
+
 							<p style="font-size:12px;word-wrap:break-word"> <%= post.content %> </p>
 						</div>
 					</div>
@@ -43,18 +49,21 @@
   	<!-- dynamic thou content! //-->
   </div>
 
-  <%= form_for @post, html: { data: {success: home_index_url} } do |f| %>
+  <%= form_for @post, html: { data: {success: home_index_url}, multipart: true } do |f| %>
 	  <div class="modal-body">
 		  <hr />
-		  <label for="post_content" class="pull-left">Description:</label>
+		  <label for="post_content" class="pull-left">Description*:</label>
 		  <%= f.text_area :content, rows:3, placeholder:"Add a description for this board", class:"pull-left", style:"margin-left:20px", required:"required" %>
 		  <div class="clearfix"></div>
+		  <hr />
+		  <label for="post_avatar">Image: </label>
+		  <%= f.file_field :avatar %>
 		  <hr />
 	  </div>
 
 	  <div class="modal-footer">
 	    <a href="#" class="btn close-modal">Close</a>
-	    <%= f.submit "Save changes", id:"submit-post", class:"btn btn-primary" %>
+	    <%= f.submit "Save changes", class:"btn btn-primary", disable_with: "Saving..." %>
 	  </div>
   <% end %>
 

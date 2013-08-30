@@ -24,6 +24,18 @@
 			</div>
 		</div>
 
+		<% if alert %>
+			<div style="margin-top:20px;background-color:#E82C0C;color:#FFF;padding:10px;height:50px">
+				<p style="text-align:center;margin-top:15px;font-size:20px;letter-spacing:1px"> <%= alert %> </p>
+			</div>
+		<% end %>
+
+		<% if notice %>
+			<div style="margin-top:20px;background-color:green;color:#FFF;padding:10px;height:50px">
+				<p style="text-align:center;margin-top:15px;font-size:20px;letter-spacing:1px"> <%= notice %> </p>
+			</div>
+		<% end %>
+
 		<div class="row-fluid" style="margin-top:20px">
 			<div class="span12">
 				<%= yield %>
