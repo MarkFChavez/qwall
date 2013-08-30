@@ -5,7 +5,7 @@
 $(document).ready ->
 	$(window).load ->
 		$('#posts-container').masonry
-			columnWidth: 50
+			columnWidth: 70
 			itemSelector: '.post-block'
 
 		$(".post-block").on "mouseover", ->

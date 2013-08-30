@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   	@users = User.where("id <> :id", {id: current_user.id})
   	@posts = Post.all
   	@post = Post.new
+  	@activities = PublicActivity::Activity.order("created_at DESC").limit(10)
   end
 
 end

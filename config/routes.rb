@@ -1,10 +1,4 @@
 QuickhitsWall::Application.routes.draw do
-  
-  get "posts/create"
-
-  get "posts/update"
-
-  get "posts/destroy"
 
   devise_for :users do
     root to: "devise/sessions#new"

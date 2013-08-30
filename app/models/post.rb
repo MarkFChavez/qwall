@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+  
   attr_accessible :content, :avatar
 
   has_attached_file :avatar, styles: { medium:"300x300>", thumb:"250x250>" }
