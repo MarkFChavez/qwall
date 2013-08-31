@@ -9,6 +9,17 @@
 						<div class="<%= cycle('red','green','blue') %> post-header">
 						</div>
 
+						<div class="pull-right" style="margin-top:5px">
+							<% if !post.favorited_by.include?(current_user) %>
+								<%= form_for @userfav do |f| %>
+									<%= f.hidden_field :post_id, class:"post-id", value: post.id %>
+									<button type="submit" class="btn btn-small btn-info favorite-post" title="Like this board?"> <i class='icon icon-white icon-heart'></i> </button>
+								<% end %>
+							<% else %>
+								<button disabled="disabled" type="submit" class="btn btn-small btn-danger favorite-post" title="You liked this board!"> <i class='icon icon-white icon-heart'></i> </button>
+							<% end %>
+						</div>
+
 						<div style="margin-top:10px">
 							<div class='pull-left'>
 								<%= g(post.user, 'img-circle', size:60) %>
@@ -30,6 +41,15 @@
 
 							<p style="font-size:12px;word-wrap:break-word"> <%= post.content %> </p>
 						</div>
+
+						<div class="pull-right" style="margin-top:5px;font-size:11px" title="<%= pluralize(post.favorited_by.size, 'person') %> liked this">
+							<i class='icon icon-thumbs-up'></i> 
+							<span class="post-favorite-count"> 
+								<%= post.favorited_by.size %> 
+							</span>
+						</div>
+
+						<div class="clearfix"></div>
 					</div>
 				<% end %>
 			<% end %>
