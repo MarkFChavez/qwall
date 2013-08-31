@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
   validates :username, length: { maximum: 12 }
   # attr_accessible :title, :body
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :user_favorites
+  has_many :favorites, through: :user_favorites, source: :post
 end
