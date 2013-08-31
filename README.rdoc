@@ -2,3 +2,5 @@ Next implementation:
 
 1. Users must see who liked the boards.
 2. Include favorites on recent activities.
+3. Send email to the board owner when a user liked it.
+4. Add comments per board
