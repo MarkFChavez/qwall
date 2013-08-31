@@ -38,9 +38,15 @@ $(document).ready ->
 				data:
 					user_favorite:
 						post_id: post_id
+				beforeSend: (data) ->
+					ctx.find('.favorite-post').hide()
+					ctx.find('.loading').show()
 				success: (data) ->
 					ctx.find('.favorite-post').removeClass('btn-info').addClass('btn-danger').attr('disabled', 'disabled')
 					ctx.parent().parent().find('.post-favorite-count').text( current_count + 1 )
 				error: (data) ->
 					alert 'error'
+				complete: (data) ->
+					ctx.find('.favorite-post').show()
+					ctx.find('.loading').hide()
 			

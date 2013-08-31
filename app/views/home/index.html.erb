@@ -14,6 +14,8 @@
 								<%= form_for @userfav do |f| %>
 									<%= f.hidden_field :post_id, class:"post-id", value: post.id %>
 									<button type="submit" class="btn btn-small btn-info favorite-post" title="Like this board?"> <i class='icon icon-white icon-heart'></i> </button>
+
+									<%= image_tag "animated-loading.gif", class:"loading", style:"display:none" %>
 								<% end %>
 							<% else %>
 								<button disabled="disabled" type="submit" class="btn btn-small btn-danger favorite-post" title="You liked this board!"> <i class='icon icon-white icon-heart'></i> </button>
