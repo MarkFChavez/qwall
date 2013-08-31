@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   has_attached_file :avatar, styles: { medium:"300x300>", thumb:"250x250>" }
   
   has_many :comments, dependent: :destroy
+  has_many :user_favorites
+  has_many :favorited_by, through: :user_favorites, source: :user
   belongs_to :user
 
   validates :content, presence: true
@@ -15,4 +17,8 @@ class Post < ActiveRecord::Base
   validates_attachment :avatar, size: {in: 0..100.kilobytes}
 
   default_scope order("created_at DESC")
+
+  def is_favorited(user)
+    favorited_by.include(user)
+  end
 end

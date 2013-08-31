@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830165724) do
+ActiveRecord::Schema.define(:version => 20130831015935) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20130830165724) do
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "user_favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_favorites", ["post_id"], :name => "index_user_favorites_on_post_id"
+  add_index "user_favorites", ["user_id"], :name => "index_user_favorites_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

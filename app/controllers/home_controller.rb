@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   	@post = Post.new
   	@activities = PublicActivity::Activity.order("created_at DESC").limit(10)
   	@comment = Comment.new
+  	@userfav = UserFavorite.new
   end
 
 end

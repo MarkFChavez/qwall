@@ -21,3 +21,26 @@ $(document).ready ->
 		$(".toggle-comments").on 'click', (e) ->
 			e.preventDefault()
 			$(@).parent().parent().find('.comments-block').toggle()
+
+		$(".new_user_favorite").on 'submit', (e) ->
+			e.preventDefault()
+			
+			ctx = $(@)
+			current_count = +ctx.parent().parent().find('.post-favorite-count').text()
+			url = $(@).attr 'action'
+			post_id = $(@).find(".post-id").val()
+			
+			$.ajax
+				type: "POST"
+				dataType: "json"
+				url: url
+				context: ctx
+				data:
+					user_favorite:
+						post_id: post_id
+				success: (data) ->
+					ctx.find('.favorite-post').removeClass('btn-info').addClass('btn-danger').attr('disabled', 'disabled')
+					ctx.parent().parent().find('.post-favorite-count').text( current_count + 1 )
+				error: (data) ->
+					alert 'error'
+			
